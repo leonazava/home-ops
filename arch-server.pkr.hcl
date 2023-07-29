@@ -1,6 +1,6 @@
-# Ubuntu Server Focal
+# Arch Server Focal
 # ---
-# Packer Template to create an Ubuntu Server (Focal) on Proxmox
+# Packer Template to create an Arch Server (Focal) on Proxmox
 
 # Variable Definitions
 variable "proxmox_api_url" {
@@ -17,7 +17,7 @@ variable "proxmox_api_token_secret" {
 }
 
 # Resource Definiation for the VM Template
-source "proxmox" "ubuntu-server-focal" {
+source "proxmox" "arch-server-focal" {
  
     # Proxmox Connection Settings
     proxmox_url = "${var.proxmox_api_url}"
@@ -29,12 +29,12 @@ source "proxmox" "ubuntu-server-focal" {
     # VM General Settings
     node = "your-proxmox-node"
     vm_id = "100"
-    vm_name = "ubuntu-server-focal"
-    template_description = "Ubuntu Server Focal Image"
+    vm_name = "arch-server-focal"
+    template_description = "Arch Server Focal Image"
 
     # VM OS Settings
     # (Option 1) Local ISO File
-    # iso_file = "local:iso/ubuntu-20.04.2-live-server-amd64.iso"
+    iso_file = "local:iso//archlinux-2023.07.01-x86_64.iso"
     # - or -
     # (Option 2) Download ISO
     # iso_url = "https://releases.ubuntu.com/20.04/ubuntu-20.04.3-live-server-amd64.iso"
@@ -106,8 +106,8 @@ source "proxmox" "ubuntu-server-focal" {
 # Build Definition to create the VM Template
 build {
 
-    name = "ubuntu-server-focal"
-    sources = ["source.proxmox.ubuntu-server-focal"]
+    name = "arch-server-focal"
+    sources = ["source.proxmox.arch-server-focal"]
 
     # Provisioning the VM Template for Cloud-Init Integration in Proxmox #1
     provisioner "shell" {
