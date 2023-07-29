@@ -2,7 +2,7 @@ resource "proxmox_virtual_environment_vm" "k8s_cp_01" {
   name        = "k8s-cp-01"
   description = "Managed by Terraform"
   tags        = ["terraform"]
-  node_name   = "test_node"
+  node_name   = "pve01"
 
   cpu {
     cores = 2
@@ -48,7 +48,7 @@ resource "proxmox_virtual_environment_vm" "k8s_worker_01" {
   name        = "k8s-worker-01"
   description = "Managed by Terraform"
   tags        = ["terraform"]
-  node_name   = "test_node"
+  node_name   = "pve01"
 
   cpu {
     cores = 3

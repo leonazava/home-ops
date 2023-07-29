@@ -1,7 +1,7 @@
 resource "proxmox_virtual_environment_file" "debian_cloud_image" {
   content_type = "iso"
   datastore_id = "local"
-  node_name    = "test_node"
+  node_name    = "pve01"
 
   source_file {
     path      = "https://cdimage.debian.org/images/cloud/bullseye/20221219-1234/debian-11-genericcloud-amd64-20221219-1234.qcow2"
@@ -13,9 +13,9 @@ resource "proxmox_virtual_environment_file" "debian_cloud_image" {
 resource "proxmox_virtual_environment_file" "cloud_config" {
   content_type = "snippets"
   datastore_id = "local"
-  node_name    = "test_node"
+  node_name    = "pve01"
 
   source_file {
-    path = "cloud-init/user-data.yml"
+    path = "../cloud-init/user-data.yml"
   }
 }

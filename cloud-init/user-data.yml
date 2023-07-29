@@ -5,14 +5,14 @@ packages:
 
 timezone: Europe/Oslo
 users:
-  - name: root
-    passwd: proxmox
+  - name: cini
+    passwd: cini
     groups: [adm, cdrom, dip, plugdev, lxd, sudo]
     lock-passwd: false
     sudo: ALL=(ALL) NOPASSWD:ALL
     shell: /bin/bash
     ssh_authorized_keys:
-      - <your ssh public key>
+      - "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCo/5UcUgeW9aNWP63MREkLQmWsyoEl2DrVxFawPenhey9sY+1v23IjpwwxW8uhKQ7nX9YG3WZq0ZlHjOXZSobQfycDJj2qrqfLYCj+6HZxAWMgd0Pvufspe2WN6wwIGozCVAOGFm+MI7TdLr6lYGRzqiRPUfCyNmvfkzTFTOFuyGkJwgZnjg2lFQd/pY7UteXiVFa200IZro/6b+1aAYpGisoKdCblz2cIZrqLjyEcCth03RYZr8+QJc7BTqo6inwSDtTFlDemDtKx0grVYYdd+gppvCx8ret4RBj/Aluc2fxT2acxXCUkZM0f66PbWwacC+wgJPAI5u0stXeEYh1Bb3JH81gsMq1RC5TGGpPAMHf1DU4D+bf10XSH+aQC//BPA0j6f6SFJD/Faxg8+vpG6ssI4Uc/G7jx91uys6ipW+dRzI5WoPGA4tFD7vv6GVFehKvdRNRhfn8GDWwU3p+Fd6rzsPjeeFiiyKpz0L9SiSrr6GqKQsvxUkzfZO+sGVs= amygdala@amygdalas-MacBook-Pro.local"
 
 power_state:
   delay: now
