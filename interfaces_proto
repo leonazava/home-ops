@@ -18,8 +18,8 @@ iface vmbr0 inet static
         post-up   iptables -t nat -A POSTROUTING -s '10.1.1.0/24' -o enp5s0 -j MASQUERADE
         post-down iptables -t nat -D POSTROUTING -s '10.1.1.0/24' -o enp5s0 -j MASQUERADE
         # wireguard vpn virtual machine config
-        post-up   iptables -t nat -A PREROUTING -p udp -d 192.168.1.100 --dport 52890 -i enp5s0 -j DNAT --to-destination 10.1.1.2:52890
-        post-down iptables -t nat -A PREROUTING -p udp -d 192.168.1.100 --dport 52890 -i enp5s0 -j DNAT --to-destination 10.1.1.2:52890
+        post-up   iptables -t nat -A PREROUTING -p udp -d 192.168.0.101 --dport 52890 -i enp5s0 -j DNAT --to-destination 10.1.1.2:52890
+        post-down iptables -t nat -A PREROUTING -p udp -d 192.168.0.101 --dport 52890 -i enp5s0 -j DNAT --to-destination 10.1.1.2:52890
 
 ---------------------
 
