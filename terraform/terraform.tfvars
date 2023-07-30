@@ -1,5 +1,5 @@
 vpc_main_cidr         = "10.1.1.0/24"            # nodes subnet
-gateway               = "10.1.1.1"               # subnet gateway
+gateway               = "192.168.0.1"            # subnet gateway
 first_ip              = "5"                      # first ip address of the master-1 node - 10.1.1.5
 worker_first_ip       = "8"                      # first ip address of the worker-1 node - 10.1.1.8
 proxmox_storage1      = "vms"                    # proxmox storage lvm 1
