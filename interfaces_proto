@@ -1,0 +1,38 @@
+auto lo
+iface lo inet loopback
+
+iface enp5s0 inet manual
+
+auto vmbr0
+iface vmbr0 inet static
+        address 192.168.0.101/24
+        gateway 192.168.0.1
+        bridge-ports enp5s0
+        bridge-stp off
+        bridge-fd 0
+
+
+--------------------
+
+auto lo
+iface lo inet loopback
+
+auto enp42s0
+iface enp42s0 inet static
+        address 192.168.1.100/24
+        gateway 192.168.1.1
+
+iface wlo1 inet manual
+
+auto vmbr0
+iface vmbr0 inet static
+        address 10.1.1.1/24
+        bridge-ports none
+        bridge-stp off
+        bridge-fd 0
+        post-up   echo 1 > /proc/sys/net/ipv4/ip_forward
+        post-up   iptables -t nat -A POSTROUTING -s '10.1.1.0/24' -o enp42s0 -j MASQUERADE
+        post-down iptables -t nat -D POSTROUTING -s '10.1.1.0/24' -o enp42s0 -j MASQUERADE
+        # wireguard vpn virtual machine config
+        post-up   iptables -t nat -A PREROUTING -p udp -d 192.168.1.100 --dport 52890 -i enp42s0 -j DNAT --to-destination 10.1.1.2:52890
+        post-down iptables -t nat -A PREROUTING -p udp -d 192.168.1.100 --dport 52890 -i enp42s0 -j DNAT --to-destination 10.1.1.2:52890
