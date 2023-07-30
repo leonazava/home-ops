@@ -55,7 +55,6 @@ build {
 
   provisioner "shell" {
     inline = [
-      "ping github.com",
       "curl -L ${local.image} -o /tmp/talos.raw.xz",
       "xz -d -c /tmp/talos.raw.xz | dd of=/dev/sda && sync",
     ]
